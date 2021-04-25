@@ -7,7 +7,7 @@ export default {
 <template>
   <header class="mb-10 p-4 text-center text-white bg-blue-800">
     <div class="mb-3 text-3xl md:text-5xl font-bold">
-      <i class="fa fa-viruses"></i>Covid-19 Tracker
+      <i class="fa fa-viruses"></i> Covid-19 Tracker
     </div>
     <p>
       API by

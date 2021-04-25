@@ -1,18 +1,11 @@
-<template>
-  <main v-if="!loading" class="">
-    Show Data
-  </main>
-
-  <main v-else class="flex-col align-center justify-center text-center">
-    <div class="text-gray-500 text-3xl mt-10 mb-6">Fetching Data</div>
-    <img class="w-24 m-auto" :src="loadingImage" alt="">
-  </main>
-</template>
-
 <script>
+import DataTitle from '@/components/DataTitle';
+
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    DataTitle
+  },
   data() {
     return {
       loading: true,
@@ -32,10 +25,21 @@ export default {
   },
   async created() {
     const data = await this.fetchCovidData();
-    this.dataDate = data.date;
+    this.dataDate = data.Date;
     this.stats = data.Global;
     this.countries = data.Countries;
     this.loading = false;
   },
 };
 </script>
+
+<template>
+  <main v-if="!loading" class="">
+    <DataTitle :text="title" :dataDate="dataDate"/>
+  </main>
+
+  <main v-else class="flex-col align-center justify-center text-center">
+    <div class="text-gray-500 text-3xl mt-10 mb-6">Fetching Data</div>
+    <img class="w-24 m-auto" :src="loadingImage" alt="" />
+  </main>
+</template>

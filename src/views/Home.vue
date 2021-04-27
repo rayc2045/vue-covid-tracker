@@ -27,9 +27,17 @@ export default {
       return data;
     },
     getCountryData(country) {
+      if (country === undefined) return this.initializeData();
       this.stats = country;
       this.title = country.Country;
     },
+    async initializeData() {
+      this.loading = true;
+      const data = await this.fetchCovidData();
+      this.title = 'Global';
+      this.stats = data.Global;
+      this.loading = false;
+    }
   },
   async created() {
     const data = await this.fetchCovidData();

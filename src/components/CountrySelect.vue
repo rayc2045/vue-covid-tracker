@@ -9,9 +9,7 @@ export default {
   },
   methods: {
     onChange() {
-      console.log(this.selected);
       const country = this.countries.find((item) => item.ID === this.selected);
-      console.log(country);
       this.$emit('get-country', country);
     },
   },
@@ -24,7 +22,7 @@ export default {
     v-model="selected"
     @change="onChange()"
   >
-    <option value="0">Select Country</option>
+    <option value="0">Global</option>
     <option v-for="country in countries" :value="country.ID">{{
       country.Country
     }}</option>
